@@ -1,0 +1,97 @@
+<!-- pages/tutor-detail/tutor-detail.wxml -->
+<view wx:if="{{tutor}}">
+
+  <!-- Hero -->
+  <view class="hero">
+    <view class="hero-top">
+      <view class="big-avatar" style="background:{{tutor.color}}">{{tutor.name[0]}}</view>
+      <view class="fav-big" bindtap="onToggleFav">{{isFav ? '❤️' : '🤍'}}</view>
+    </view>
+    <view class="hero-name-row">
+      <text class="hero-name serif">{{tutor.name}} 老师</text>
+      <text wx:if="{{tutor.featured}}" class="badge-orange">⭐ 推荐</text>
+    </view>
+    <view class="hero-school">{{tutor.school}} · {{tutor.title}}</view>
+    <view class="hero-meta">
+      <text class="rating">⭐ {{tutor.rating}}</text>
+      <text> ({{tutor.reviews}} 条) · 教龄 {{tutor.years}} 年 · 已教 {{tutor.students}}+ 学生</text>
+    </view>
+    <view class="hero-tags">
+      <text
+        wx:for="{{tutor.tags}}"
+        wx:key="*this"
+        class="badge-green"
+      >{{item}}</text>
+    </view>
+  </view>
+
+  <!-- Bio -->
+  <view class="card">
+    <view class="section-title serif">老师简介</view>
+    <view class="bio">{{tutor.bio}}</view>
+    <view class="meta-grid">
+      <view class="meta-box">
+        <view class="meta-label">教学风格</view>
+        <view class="meta-value">{{tutor.style}}</view>
+      </view>
+      <view class="meta-box">
+        <view class="meta-label">适合年级</view>
+        <view class="meta-value">{{tutor.grades}}</view>
+      </view>
+      <view class="meta-box">
+        <view class="meta-label">授课方式</view>
+        <view class="meta-value">{{tutor.mode}}</view>
+      </view>
+      <view class="meta-box">
+        <view class="meta-label">所在区域</view>
+        <view class="meta-value">📍 {{tutor.district}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Books taught -->
+  <view wx:if="{{tutor.books.length > 0}}" class="card">
+    <view class="section-title serif">📘 教过的教材 ({{tutor.books.length}})</view>
+    <view class="section-sub">扫描这些课本，{{tutor.name}}老师会被优先推荐</view>
+    <view class="book-grid">
+      <view
+        wx:for="{{tutor.books}}"
+        wx:key="*this"
+        class="book-item"
+      >📖 {{item}}</view>
+    </view>
+  </view>
+
+  <!-- Credentials -->
+  <view class="card">
+    <view class="section-title serif">资质证书</view>
+    <view class="cred-grid">
+      <view
+        wx:for="{{tutor.verified}}"
+        wx:key="*this"
+        class="cred-item"
+      >✓ {{item}}</view>
+    </view>
+    <view class="section-sub">所有资质均经学伴人工核验。平台通过率仅 68%。</view>
+  </view>
+
+  <!-- Compliance callout -->
+  <view class="compliance-card">
+    <view class="compliance-title">🛡️ 双减政策合规提示</view>
+    <view class="compliance-text">
+      针对义务教育阶段（小学 1 至初中 3 年级）学生的学科类辅导，不得在节假日、周末、寒暑假期间进行。
+      {{tutor.primarySubject}}类素质培训不受此限。
+    </view>
+  </view>
+
+  <!-- Sticky CTA -->
+  <view class="cta-bar">
+    <view class="cta-price">
+      <text class="price-big serif">¥{{tutor.price}}</text>
+      <text class="price-unit">/ 课时</text>
+    </view>
+    <button class="btn-primary cta-btn" bindtap="onContact">💬 联系老师</button>
+  </view>
+</view>
+
+<view wx:else class="loading">加载中...</view>

@@ -1,0 +1,109 @@
+/* pages/my/my.wxss */
+
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 40rpx 32rpx;
+  background: linear-gradient(135deg, #1a5d3a, #064E3B);
+  color: #ffffff;
+}
+
+.user-avatar {
+  width: 112rpx;
+  height: 112rpx;
+  background: #D97706;
+  border-radius: 50%;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-name {
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.user-meta {
+  font-size: 22rpx;
+  opacity: 0.8;
+  margin-top: 4rpx;
+}
+
+.menu-section {
+  background: #ffffff;
+  margin-top: 24rpx;
+  padding: 24rpx;
+}
+
+.menu-title {
+  font-weight: 700;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  color: #1f2937;
+}
+
+.fav-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 16rpx 0;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.fav-row:last-child {
+  border-bottom: none;
+}
+
+.fav-info {
+  flex: 1;
+}
+
+.fav-name {
+  font-weight: 600;
+  font-size: 28rpx;
+}
+
+.fav-school {
+  font-size: 22rpx;
+  color: #6B7280;
+  margin-top: 4rpx;
+}
+
+.fav-price {
+  font-weight: 700;
+  font-size: 32rpx;
+  color: #1a5d3a;
+}
+
+.empty-fav {
+  padding: 40rpx;
+  text-align: center;
+  color: #9CA3AF;
+  font-size: 24rpx;
+}
+
+.menu-row {
+  padding: 24rpx 0;
+  border-bottom: 1px solid #F3F4F6;
+  font-size: 28rpx;
+}
+
+.menu-row:last-child {
+  border-bottom: none;
+}
+
+.footer {
+  text-align: center;
+  font-size: 22rpx;
+  color: #9CA3AF;
+  padding: 40rpx;
+}
+
+.brand-green {
+  color: #1a5d3a;
+  font-weight: 600;
+}

@@ -1,0 +1,89 @@
+/* app.wxss — global styles (apply to all pages) */
+
+page {
+  background: #FDF9F0;
+  color: #1f2937;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+/* Reusable utility classes */
+.brand-green { color: #1a5d3a; }
+.bg-brand-green { background-color: #1a5d3a; }
+.brand-orange { color: #D97706; }
+.bg-brand-orange { background-color: #D97706; }
+
+.serif {
+  font-family: "PingFang SC Semibold", "Songti SC", serif;
+  font-weight: 700;
+}
+
+.container {
+  padding: 24rpx;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  border: 1px solid #FEF3C7;
+}
+
+.btn-primary {
+  background: #1a5d3a;
+  color: #ffffff;
+  text-align: center;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  font-weight: 600;
+  font-size: 30rpx;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #1a5d3a;
+  border: 1px solid #1a5d3a;
+  text-align: center;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  font-weight: 600;
+  font-size: 30rpx;
+}
+
+.badge-green {
+  background: #DCFCE7;
+  color: #166534;
+  padding: 4rpx 16rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+}
+
+.badge-orange {
+  background: #FEF3C7;
+  color: #92400E;
+  padding: 4rpx 16rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+}
+
+.badge-red {
+  background: #FEE2E2;
+  color: #991B1B;
+  padding: 4rpx 16rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+}
+
+.avatar-circle {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 40rpx;
+}

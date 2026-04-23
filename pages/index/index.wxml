@@ -1,0 +1,92 @@
+<!-- pages/index/index.wxml — Home page -->
+<view class="hero">
+  <view class="tag">📚 云南出版集团官方合作</view>
+  <view class="hero-title serif">
+    扫一下课本，
+    <text class="brand-orange">遇见一位</text>
+    <text class="brand-green">好老师</text>
+  </view>
+  <view class="hero-sub">
+    平台 <text class="bold">0 抽成</text>，学费 100% 归老师
+  </view>
+
+  <button class="btn-primary scan-btn" bindtap="onScan">
+    📷  扫描课本 QR 码
+  </button>
+  <button class="btn-secondary" bindtap="goTutors">
+    🔍  浏览全部老师
+  </button>
+</view>
+
+<!-- Stats -->
+<view class="stats">
+  <view class="stat">
+    <view class="stat-n serif brand-green">0%</view>
+    <view class="stat-l">平台抽成</view>
+  </view>
+  <view class="stat">
+    <view class="stat-n serif brand-green">24+</view>
+    <view class="stat-l">认证老师</view>
+  </view>
+  <view class="stat">
+    <view class="stat-n serif brand-green">120+</view>
+    <view class="stat-l">教材匹配</view>
+  </view>
+</view>
+
+<!-- Featured tutors -->
+<view class="section">
+  <view class="section-header">
+    <text class="section-title serif">⭐ 本周推荐老师</text>
+    <text class="section-more" bindtap="goTutors">更多 ›</text>
+  </view>
+
+  <view class="tutor-list">
+    <view
+      wx:for="{{featured}}"
+      wx:key="id"
+      class="card tutor-card"
+      data-id="{{item.id}}"
+      bindtap="goTutor"
+    >
+      <view class="tutor-row">
+        <view class="avatar-circle" style="background:{{item.color}}">{{item.name[0]}}</view>
+        <view class="tutor-info">
+          <view class="tutor-name">
+            <text class="name-text">{{item.name}} 老师</text>
+            <text wx:if="{{item.featured}}" class="badge-orange">⭐ 推荐</text>
+          </view>
+          <view class="tutor-school">{{item.school}}</view>
+          <view class="tutor-meta">
+            <text class="rating">⭐ {{item.rating}}</text>
+            <text> ({{item.reviews}})</text>
+            <text> · 教龄 {{item.years}} 年</text>
+          </view>
+        </view>
+      </view>
+      <view class="tutor-tags">
+        <text wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="badge-green">{{tag}}</text>
+      </view>
+      <view class="tutor-footer">
+        <view>
+          <text class="price serif">¥{{item.price}}</text>
+          <text class="price-l">/ 课时</text>
+        </view>
+        <text class="district">📍 {{item.district}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- Compliance banner -->
+<view class="compliance">
+  <view class="compliance-icon">🛡️</view>
+  <view class="compliance-text">
+    <view class="compliance-title">严格遵守《双减》政策</view>
+    <view class="compliance-sub">义务教育学科类培训有时段限制 · 所有老师经三重核验</view>
+  </view>
+</view>
+
+<view class="footer">
+  学伴 XUEBAN · 云南出版集团战略合作伙伴
+</view>

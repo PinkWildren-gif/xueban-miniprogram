@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/tutors/tutors",
+    "pages/tutor-detail/tutor-detail",
+    "pages/my/my"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1a5d3a",
+    "navigationBarTitleText": "学伴",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FDF9F0"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1a5d3a",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/tutors/tutors",
+        "text": "找老师"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,51 @@
+<!-- pages/my/my.wxml -->
+<view class="user-card">
+  <view class="user-avatar">王</view>
+  <view>
+    <view class="user-name">王女士</view>
+    <view class="user-meta">昆明 · 五华区 · 家庭版会员</view>
+  </view>
+</view>
+
+<view class="menu-section">
+  <view class="menu-title serif">❤️ 我的收藏 ({{favTutors.length}})</view>
+  <view wx:if="{{favTutors.length > 0}}">
+    <view
+      wx:for="{{favTutors}}"
+      wx:key="id"
+      class="fav-row"
+      data-id="{{item.id}}"
+      bindtap="goTutor"
+    >
+      <view class="avatar-circle" style="background:{{item.color}}; width:72rpx; height:72rpx; font-size:32rpx">{{item.name[0]}}</view>
+      <view class="fav-info">
+        <view class="fav-name">{{item.name}} 老师</view>
+        <view class="fav-school">{{item.school}}</view>
+      </view>
+      <view class="fav-price serif">¥{{item.price}}</view>
+    </view>
+  </view>
+  <view wx:else class="empty-fav">
+    还没有收藏的老师 · 去<text class="brand-green" bindtap="goTutors">找老师</text>
+  </view>
+</view>
+
+<view class="menu-section">
+  <view class="menu-title serif">账户</view>
+  <view class="menu-row">📋 我的课程</view>
+  <view class="menu-row">💬 消息</view>
+  <view class="menu-row">💎 会员中心</view>
+  <view class="menu-row">🎁 邀请好友</view>
+</view>
+
+<view class="menu-section">
+  <view class="menu-title serif">帮助</view>
+  <view class="menu-row">🛡️ 合规披露</view>
+  <view class="menu-row">📜 服务条款</view>
+  <view class="menu-row">🔐 隐私政策</view>
+  <view class="menu-row">📞 联系客服</view>
+</view>
+
+<view class="footer">
+  学伴 XUEBAN · v0.1.0 (Alpha)
+</view>
