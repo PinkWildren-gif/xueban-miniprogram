@@ -47,13 +47,13 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.1.0",
-  "appid": "touristappid",
+  "appid": "wx179e2d12b4ea830e",
   "projectname": "xueban-mvp",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "__COMMENT__": "Replace 'touristappid' with your own AppID from https://mp.weixin.qq.com/ → 设置 → 开发设置 → AppID(小程序ID)",
+  "__COMMENT__": "Test AppID (测试号) — fine for simulator + phone preview. Replace with the real AppID after registration to enable CloudBase and publishing.",
   "simulatorPluginLibVersion": {}
 }
