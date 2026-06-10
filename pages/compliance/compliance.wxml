@@ -1,0 +1,122 @@
+<!-- pages/compliance/compliance.wxml -->
+<view class="container legal-page">
+
+  <!-- Header -->
+  <view class="page-header">
+    <view class="header-badge">🛡️ 公开披露 · 接受监督</view>
+    <view class="page-title serif">学伴合规披露</view>
+    <view class="page-intro">我们相信透明是最好的信任基石。本页面公开学伴的合规措施、教师核验流程与监督渠道，接受所有用户、合作伙伴与监管部门的监督。</view>
+  </view>
+
+  <!-- §1 双减政策解读 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§1</text>
+      <text class="sec-title serif">「双减」政策解读</text>
+    </view>
+    <view class="policy-box">
+      <view class="policy-title">📜 我们严格遵守"双减"政策</view>
+      <view class="policy-text">根据国务院办公厅 2021 年 7 月发布的《关于进一步减轻义务教育阶段学生作业负担和校外培训负担的意见》，我们主动建立了一整套合规措施，确保平台不承接、不传播、不助长违反义务教育阶段学科类培训限制的内容。下表帮助您快速判断哪些家教服务可以预约：</view>
+    </view>
+
+    <!-- 什么可以 -->
+    <view class="rule-block ok">
+      <view class="rule-title">✅ 什么可以</view>
+      <view class="li"><text class="li-dot ok-dot">·</text><text class="li-text">素质教育类：音乐、美术、书法、舞蹈、体育、围棋、编程（非应试）、演讲口才等 —— 随时可约，不受限制</text></view>
+      <view class="li"><text class="li-dot ok-dot">·</text><text class="li-text">高中阶段（10-12 年级）学科辅导</text></view>
+      <view class="li"><text class="li-dot ok-dot">·</text><text class="li-text">大学生、成人的语言学习、职业技能、兴趣培训</text></view>
+      <view class="li"><text class="li-dot ok-dot">·</text><text class="li-text">义务教育阶段（小学、初中）学科辅导 —— 仅限工作日，线下 20:30 前、线上 21:00 前结束</text></view>
+    </view>
+
+    <!-- 什么不可以 -->
+    <view class="rule-block no">
+      <view class="rule-title danger">🚫 什么不可以</view>
+      <view class="li"><text class="li-dot no-dot">✕</text><text class="li-text">义务教育阶段学科类辅导安排在周末、国家法定节假日或寒暑假</text></view>
+      <view class="li"><text class="li-dot no-dot">✕</text><text class="li-text">以"一对一""住家教师""小班课"等名义，在周末、节假日、寒暑假等禁止时段变相开展学科类培训</text></view>
+      <view class="li"><text class="li-dot no-dot">✕</text><text class="li-text">超纲、拔高、应试性质的义务教育学科培训</text></view>
+      <view class="li"><text class="li-dot no-dot">✕</text><text class="li-text">通过平台之外的渠道私下达成违反以上限制的协议</text></view>
+    </view>
+  </view>
+
+  <!-- §2 教师三重核验 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§2</text>
+      <text class="sec-title serif">教师三重核验</text>
+    </view>
+    <view class="body-text">每一位在学伴展示的老师都必须通过<text class="strong">三重核验</text>，未通过核验的教师无法入驻：</view>
+
+    <view class="step">
+      <view class="step-num">1</view>
+      <view class="step-body">
+        <view class="step-title">实名认证</view>
+        <view class="step-desc">身份证实名认证，通过公安部身份认证系统核验，确保人证一致。</view>
+      </view>
+    </view>
+    <view class="step">
+      <view class="step-num">2</view>
+      <view class="step-body">
+        <view class="step-title">学历核验</view>
+        <view class="step-desc">学历证书通过学信网在线核验，杜绝虚假学历。</view>
+      </view>
+    </view>
+    <view class="step">
+      <view class="step-num">3</view>
+      <view class="step-body">
+        <view class="step-title">教师资格核验</view>
+        <view class="step-desc">教师资格证核验（如适用），持证教师将获得"已认证"标识与加权推荐。</view>
+      </view>
+    </view>
+
+    <view class="note">注：核验失败者的资料将在 30 日后自动销毁。我们坚持高标准，宁缺毋滥。</view>
+  </view>
+
+  <!-- §3 平台合规措施 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§3</text>
+      <text class="sec-title serif">平台合规措施</text>
+    </view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">发布前风险提示：</text>发布需求或承接订单前，系统强制弹出"双减"政策提示，须确认已阅读方可继续</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">AI + 人工双重审核：</text>所有发布内容经 AI 敏感词自动扫描，可疑内容进入人工审核队列</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">时段智能拦截：</text>系统自动识别节假日、周末、寒暑假，对义务教育阶段学科类订单自动拦截，并引导用户选择合规的素质教育等替代服务</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">记录留存：</text>所有发布记录、沟通记录、订单记录保存不少于 60 天，以满足监管部门依法调取的要求</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">违规处置：</text>违规内容立即删除、警告或封禁账号，情节严重者报送监管部门</text></view>
+  </view>
+
+  <!-- §4 违规举报渠道 -->
+  <view class="report-card">
+    <view class="report-icon">📞</view>
+    <view class="report-title serif">违规举报渠道</view>
+    <view class="report-intro">如您发现平台上任何违反"双减"政策、《个人信息保护法》或其他法律法规的内容，请立即联系我们。我们将 24 小时内响应，严肃处理并反馈结果。</view>
+    <view class="report-item">
+      <view class="report-label">📧 举报邮箱</view>
+      <view class="report-value">report@xueban.cn</view>
+      <view class="report-sub">24 小时响应</view>
+    </view>
+    <view class="report-item">
+      <view class="report-label">📞 举报电话</view>
+      <view class="report-value">0871-XXXXXXXX</view>
+      <view class="report-sub">工作日 9:00-18:00</view>
+    </view>
+    <view class="report-item">
+      <view class="report-label">🌐 国家级举报</view>
+      <view class="report-value">12377.cn</view>
+      <view class="report-sub">国家网信办网络举报中心</view>
+    </view>
+  </view>
+
+  <!-- §5 备案信息 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§5</text>
+      <text class="sec-title serif">备案信息</text>
+    </view>
+    <view class="body-text">运营主体：云南学伴科技有限公司（注册地：云南省昆明市）</view>
+    <view class="icp-line">备案号：滇ICP备XXXXXXXX号（备案申请中）</view>
+    <view class="link-row" bindtap="goTerms">查看《服务条款》第 5 条「双减」合规条款 →</view>
+  </view>
+
+  <view class="page-footer">更新日期 2026年6月 · 学伴 XUEBAN</view>
+
+</view>

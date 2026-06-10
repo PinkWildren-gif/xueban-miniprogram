@@ -1,171 +1,85 @@
-# 学伴 WeChat Mini Program — Starter Project
+# 学伴 (XueBan) — WeChat Mini Program
 
-A working WeChat Mini Program (微信小程序) scaffold for the Yunnan tutor platform. Solo-dev, zero-budget setup.
+A WeChat Mini Program (微信小程序) that connects parents in Yunnan with vetted local tutors. The core loop: scan the QR code printed in a textbook → see tutors who teach **that exact book** in your district → chat → book a trial lesson.
 
-## What's already built
+Three design commitments:
 
-- ✅ 4-page app: Home / Find Tutor (browse) / Tutor Detail / My
-- ✅ Working filters: subject category, grade, district, search, sort
-- ✅ Favorites (persisted in `wx.setStorageSync`)
-- ✅ Native QR scanner using `wx.scanCode`
-- ✅ Tab bar navigation
-- ✅ 8 seed tutors ported from the web demo
-- ✅ Page-to-page navigation with URL params
-- ✅ Share-to-WeChat on home and detail pages
+- **0% commission** — the platform charges tutors nothing; pricing is between parent and tutor.
+- **Double-Reduction (双减) compliant by design** — booking flow blocks school-night and holiday academic-subject sessions, tutor applications require a compliance pledge, and a first-launch modal explains the policy posture.
+- **Local-first** — Kunming districts, Yunnan schools, real textbook editions used in local classrooms.
 
-## What's NOT yet built (that's the roadmap)
+## Features
 
-- ❌ Backend (Tencent CloudBase) — data is local-only for now
-- ❌ Real auth (WeChat login)
-- ❌ Tutor signup flow
-- ❌ Chat / messaging
-- ❌ WeChat Pay integration
-- ❌ Admin dashboard
-- ❌ Real book database + QR-to-match logic
-
----
-
-## Part A — One-time setup (do this tonight)
-
-### Step 1: Register as individual Mini Program developer (~10 minutes)
-
-1. Go to **https://mp.weixin.qq.com/**
-2. Click the top-right "注册" button
-3. Choose the **"个人"** (individual) account type — not 企业
-4. Fill in:
-   - Email (can be Gmail, Outlook — not already used for WeChat public account)
-   - Password
-   - Activate via the email confirmation link
-5. Log in, then:
-   - Provide your Chinese ID number (身份证) — your dad can lend his temporarily
-   - Verify via WeChat (scan a QR code with WeChat mobile app)
-6. Once approved, go to **设置 → 开发设置** and copy the **AppID**. It looks like `wx1234567890abcdef`.
-
-⚠️ **Can't register from UK without a Chinese ID?** Options:
-- Use your dad's 身份证 (he creates the account, shares access with you)
-- Or skip registration and develop with the **Test AppID** built into WeChat Developer Tools (works for local dev but can't be shared to real phones)
-
-### Step 2: Install WeChat Developer Tools (~5 minutes)
-
-1. Download: **https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html**
-2. Pick your OS (Mac/Windows)
-3. Install, then open
-4. **Log in by scanning the QR with your WeChat mobile app** (the app you use to message people)
-
-### Step 3: Open this project in the dev tool (~2 minutes)
-
-1. In WeChat Developer Tools, click **"+" → 导入项目** (Import Project)
-2. Browse to `/Users/andilu/Desktop/ContratoYA/wechat-mini-program/`
-3. AppID: paste the one you got in Step 1, OR use the default "touristappid" (works for local dev only — you won't be able to share QR codes to real phones with touristappid)
-4. Project name: `学伴 MVP` (or anything)
-5. Click **确定** (OK)
-6. The simulator should load and show the home page 🎉
-
-### Step 4: Test on your real phone (optional but fun)
-
-1. In the dev tool top bar, click **预览** (Preview)
-2. A QR code appears
-3. Scan it with your own WeChat app
-4. The Mini Program opens on your phone in a sandboxed test environment
-5. (If you used "touristappid" this won't work — need a real AppID)
-
----
-
-## Part B — Weekly dev plan
-
-### Week 1: Get comfortable with Mini Program syntax
-- Goal: understand WXML (≈HTML), WXSS (≈CSS), JS, JSON
-- Read: https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/
-- Modify this starter — change colors, text, layouts — break things on purpose
-
-### Week 2: Set up Tencent CloudBase (free backend)
-- Open https://console.cloud.tencent.com/tcb (requires Tencent Cloud account — free signup with ID)
-- Create a new environment (选 "免费版" — free tier)
-- In WeChat Dev Tools, enable "云开发" (Cloud Development)
-- Migrate the `utils/data.js` tutor array to a CloudBase database collection
-
-### Week 3: Real auth
-- Add WeChat login (`wx.login`) to grab user's openid
-- Save user profile to a `users` collection in CloudBase
-- Test with 2 devices — verify each gets a unique user
-
-### Week 4: Tutor signup flow
-- Build `pages/tutor-onboard/` with multi-step form
-- Use `wx.chooseImage` + CloudBase storage to upload ID photo
-- Save tutor doc to `tutors` collection
-- Create an admin-only page to approve pending tutors
-
-### Week 5-6: Matching + messaging
-- Real book DB (20 entries you hand-curate)
-- Scan flow → ISBN lookup → match
-- 1-to-1 messaging using CloudBase collections + `wx.onMessage` subscriptions
-
-### Week 7-8: Polish + alpha release
-- Apply for WeChat Pay merchant account (requires business license)
-- Publish to 100-user test pool (WeChat allows 100 "experience users" without full release)
-- Invite your dad's first 50 contacts
-
----
+- **Browse / filter / search tutors** — 24 seed tutors filterable by category (学科/艺术/素质), subject, grade, district, mode; keyword search; sort by rating/price/experience; favorites persisted on device.
+- **Book catalog + match engine** — 37 textbooks (人教/北师大/苏教… by subject and level); scan a book QR or pick from the catalog to get ranked tutor matches for that exact book.
+- **Chat** — per-tutor conversations with unread counts, a 学伴官方 platform account, and simulated tutor replies (see Status below).
+- **Trial-lesson booking** — date/time/mode picker that is Double-Reduction-aware: academic-subject lessons cannot be booked into restricted slots.
+- **Tutor application** — multi-step signup form ending in a compliance pledge; saved as a draft application on device.
+- **Legal pages** — user agreement (服务协议), privacy policy (隐私政策), and a compliance statement page.
+- **First-launch compliance modal** — shown once, acknowledgment persisted.
 
 ## Project structure
 
 ```
-wechat-mini-program/
-├── app.json              # Global config: pages, tabs, window
-├── app.js                # App lifecycle (onLaunch)
-├── app.wxss              # Global styles
-├── project.config.json   # IDE / build config
-├── sitemap.json          # SEO for WeChat search
+xueban-miniprogram/
+├── app.json                    # Pages, tab bar, green nav window config
+├── app.js                      # App lifecycle
+├── app.wxss                    # Global design system (.card, .btn-primary, .badge-*, …)
+├── project.config.json         # DevTools project config (AppID lives here)
+├── sitemap.json
+├── components/
+│   └── compliance-modal/       # First-launch 双减 acknowledgment dialog
+├── pages/
+│   ├── index/                  # Home: QR scan entry, categories, featured tutors (TAB)
+│   ├── tutors/                 # Browse all tutors with filters/search/sort (TAB)
+│   ├── messages/               # Conversation list with unread badges (TAB)
+│   ├── my/                     # Profile, favorites, lesson requests, entry links (TAB)
+│   ├── tutor-detail/           # Full tutor profile: bio, books, reviews, actions
+│   ├── match/                  # Scan/book result → ranked matching tutors
+│   ├── books/                  # Textbook catalog grouped by grade and subject
+│   ├── chat/                   # 1-to-1 conversation view (simulated replies)
+│   ├── booking/                # Trial-lesson request form (双减-aware slots)
+│   ├── tutor-signup/           # Multi-step tutor application + compliance pledge
+│   ├── compliance/             # 双减 policy statement
+│   ├── terms/                  # 服务协议
+│   └── privacy/                # 隐私政策
 ├── utils/
-│   └── data.js           # Tutor database + helpers (temporary)
-└── pages/
-    ├── index/            # Home page (scan + featured tutors)
-    ├── tutors/           # Full tutor browse with filters
-    ├── tutor-detail/     # Individual tutor profile
-    └── my/               # User profile + favorites
+│   ├── data.js                 # Static seed data: tutors, reviews, books + query helpers
+│   └── store.js                # All user state (wx storage): profile, chats, requests, favorites
+├── cloudfunctions/             # Tencent CloudBase functions, pre-built for migration
+├── tools/
+│   └── validate.js             # Static checks: JSON/JS/WXML validity, nav targets, page registration
+├── CLOUDBASE-SETUP.md          # Backend migration guide
+└── LAUNCH-RUNBOOK.md           # Human-only launch steps (accounts, filings, review)
 ```
 
-Each page has 4 files (Mini Program convention):
-- `.wxml` — template (HTML-like)
-- `.wxss` — styles (CSS-like, supports `rpx` unit = responsive px)
-- `.js` — logic (Page({ data, onLoad, methods }))
-- `.json` — page-level config (nav bar title, etc.)
+Each page is the standard 4-file set: `.wxml` (template), `.wxss` (styles, `rpx` units), `.js` (logic), `.json` (nav title).
 
----
+## How to run
 
-## Key Mini Program concepts vs. web
+1. Install [WeChat Developer Tools](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html) and log in by scanning the QR with your WeChat app.
+2. **导入项目 (Import Project)** → select this folder.
+3. AppID: the default `touristappid` works fully **in the simulator** — every page, every flow.
+4. **Preview to a real phone** requires a real or test AppID (`touristappid` previews time out by design). Getting one takes 5 minutes — see **Step 0 in [LAUNCH-RUNBOOK.md](LAUNCH-RUNBOOK.md)**.
 
-| Web | Mini Program |
-|---|---|
-| `<div>` | `<view>` |
-| `<img>` | `<image>` |
-| `<a href>` | `<navigator url>` OR `bindtap + wx.navigateTo` |
-| `px` | `rpx` (750rpx = screen width) |
-| `localStorage` | `wx.setStorageSync()` |
-| `fetch()` | `wx.request()` |
-| `onclick` | `bindtap` |
-| `v-for` / `map` | `wx:for="{{list}}" wx:key="..."` |
-| `v-if` | `wx:if="{{cond}}"` |
-| Inline CSS: `style="color:red"` | Same, but in WXSS prefer classes |
+Optional sanity check before committing: `node tools/validate.js` from the repo root.
 
----
+## Data architecture
 
-## Helpful links
+Two layers, deliberately separated:
 
-- **Official docs (Chinese):** https://developers.weixin.qq.com/miniprogram/dev/framework/
-- **Mini Program design guide:** https://developers.weixin.qq.com/miniprogram/design/
-- **Tencent CloudBase docs:** https://docs.cloudbase.net/
-- **Component library:** https://developers.weixin.qq.com/miniprogram/dev/component/
-- **API reference:** https://developers.weixin.qq.com/miniprogram/dev/api/
-- **WeChat Pay integration:** https://pay.weixin.qq.com/docs/
+- **`utils/data.js`** — static seed content (24 tutors, 39 reviews, 37 books) plus pure query helpers (`getTutorById`, `getTutorsByBook`, …). Read-only from pages.
+- **`utils/store.js`** — all mutable user state, backed by `wx.setStorageSync`: profile, favorites, conversations/messages, lesson requests, tutor application draft, compliance acknowledgment. Pages never touch wx storage directly.
 
----
+This split is the migration seam: when Tencent CloudBase is connected, `data.js` reads become cloud database queries and `store.js` functions become sync points — page code does not change. Cloud functions are pre-built in `cloudfunctions/`; the migration steps are in **[CLOUDBASE-SETUP.md](CLOUDBASE-SETUP.md)** (requires a real AppID — test AppIDs cannot use CloudBase).
 
-## If you get stuck
+## Status: Demo / Alpha
 
-1. **Red error in dev tool console** — click it, it often links to the exact file + line
-2. **Template not rendering** — check `data:` in the `.js` file, and `wx:for` / `wx:if` syntax
-3. **Styles not applying** — WXSS scopes are per-page; global styles live in `app.wxss`
-4. **`wx.xxx` API not working** — some APIs require permission setup in `app.json`
+The full UI and flows work, but some behavior is simulated until the backend is connected:
 
-Or just ping me with a screenshot and I'll debug.
+- **Chat replies** are generated locally — no real tutor receives messages.
+- **Booking requests** are stored on-device only; real tutors do not see them.
+- **Tutor applications** are saved locally, not submitted for review.
+- No real auth (`wx.login`), no payments, single-device state only.
+
+The path from here to a real launch — accounts, legal filings, CloudBase, WeChat review — is laid out step by step in [LAUNCH-RUNBOOK.md](LAUNCH-RUNBOOK.md).

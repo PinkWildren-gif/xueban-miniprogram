@@ -1,0 +1,31 @@
+<!-- pages/messages/messages.wxml -->
+
+<!-- Conversations list -->
+<view wx:if="{{conversations.length > 0}}" class="conv-list">
+  <view
+    wx:for="{{conversations}}"
+    wx:key="tutorId"
+    class="conv-row"
+    data-id="{{item.tutorId}}"
+    bindtap="goChat"
+  >
+    <view class="avatar-wrap">
+      <view class="avatar-circle conv-avatar" style="background:{{item.color}}">{{item.avatarChar}}</view>
+      <view wx:if="{{item.unread > 0}}" class="unread-badge">{{item.unreadLabel}}</view>
+    </view>
+    <view class="conv-main">
+      <view class="conv-top">
+        <text class="conv-name">{{item.displayName}}</text>
+        <text class="conv-time">{{item.timeLabel}}</text>
+      </view>
+      <view class="conv-preview">{{item.lastMessage}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- Empty state -->
+<view wx:else class="empty">
+  <view class="empty-icon">💬</view>
+  <view class="empty-text">还没有消息 · 去找老师聊聊</view>
+  <view class="btn-primary empty-btn" bindtap="goTutors">去找老师</view>
+</view>

@@ -1,0 +1,170 @@
+/* pages/terms/terms.wxss */
+
+.legal-page {
+  padding-bottom: 40rpx;
+}
+
+.page-header {
+  text-align: center;
+  padding: 40rpx 24rpx 36rpx;
+}
+
+.eyebrow {
+  font-size: 22rpx;
+  color: #D97706;
+  letter-spacing: 4rpx;
+  margin-bottom: 16rpx;
+}
+
+.page-title {
+  font-size: 44rpx;
+  color: #1f2937;
+  margin-bottom: 16rpx;
+}
+
+.page-meta {
+  font-size: 22rpx;
+  color: #9CA3AF;
+}
+
+.summary-box {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  border-radius: 24rpx;
+  padding: 28rpx 32rpx;
+  margin-bottom: 24rpx;
+}
+
+.summary-label {
+  font-size: 24rpx;
+  color: #D97706;
+  font-weight: 600;
+  margin-bottom: 12rpx;
+}
+
+.summary-text {
+  font-size: 26rpx;
+  color: #4B5563;
+  line-height: 1.8;
+}
+
+.warn-strong {
+  color: #B91C1C;
+  font-weight: 600;
+}
+
+.sec-card {
+  padding: 36rpx 32rpx;
+}
+
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14rpx;
+  margin-bottom: 24rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.sec-num {
+  font-size: 34rpx;
+  color: #D97706;
+}
+
+.sec-title {
+  font-size: 32rpx;
+  color: #1a5d3a;
+  flex: 1;
+}
+
+.sub-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 24rpx 0 14rpx;
+}
+
+.body-text {
+  font-size: 26rpx;
+  color: #4B5563;
+  line-height: 1.9;
+  margin-bottom: 16rpx;
+}
+
+.li {
+  display: flex;
+  gap: 14rpx;
+  margin-bottom: 14rpx;
+}
+
+.li-dot {
+  color: #1a5d3a;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.li-text {
+  flex: 1;
+  font-size: 26rpx;
+  color: #4B5563;
+  line-height: 1.8;
+}
+
+.strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.note {
+  font-size: 24rpx;
+  color: #6B7280;
+  line-height: 1.7;
+  margin-top: 8rpx;
+}
+
+.warn-box {
+  background: #FEF2F2;
+  border-left: 6rpx solid #DC2626;
+  padding: 24rpx 28rpx;
+  border-radius: 12rpx;
+  margin-bottom: 24rpx;
+}
+
+.warn-title {
+  font-size: 26rpx;
+  color: #991B1B;
+  font-weight: 700;
+  margin-bottom: 10rpx;
+}
+
+.warn-text {
+  font-size: 24rpx;
+  color: #4B5563;
+  line-height: 1.8;
+}
+
+.highlight-box {
+  background: #F0FDF4;
+  border-left: 6rpx solid #1a5d3a;
+  padding: 24rpx 28rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+  color: #14532D;
+  line-height: 1.8;
+  font-weight: 600;
+}
+
+.link-row {
+  font-size: 24rpx;
+  color: #1a5d3a;
+  text-decoration: underline;
+  margin-top: 16rpx;
+}
+
+.page-footer {
+  text-align: center;
+  font-size: 22rpx;
+  color: #9CA3AF;
+  padding: 40rpx 0 60rpx;
+}

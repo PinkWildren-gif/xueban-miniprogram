@@ -1,0 +1,114 @@
+<!-- pages/match/match.wxml -->
+<view class="container">
+
+  <!-- Matched book context -->
+  <view class="card book-card">
+    <view class="rescan brand-orange" bindtap="rescan">重新扫描</view>
+    <view class="book-row">
+      <view class="book-cover" style="background:{{bookColor}}">
+        <view class="cover-series">{{coverSeries}}</view>
+        <view class="cover-name serif">
+          <view>{{coverLine1}}</view>
+          <view>{{coverLine2}}</view>
+        </view>
+      </view>
+      <view class="book-info">
+        <view class="stamp-row">
+          <text class="stamp">已识别</text>
+          <text class="scan-time">扫描时间 {{scanTime}}</text>
+        </view>
+        <view class="book-title serif">{{bookTitle}}</view>
+        <view class="book-isbn">ISBN 978-7-107-xxxxxx · 云南出版集团发行</view>
+      </view>
+    </view>
+    <view class="chip-wrap">
+      <text class="info-chip chip-amber">{{locationText}}</text>
+      <text class="info-chip chip-green">🎁 已激活 1个月免费会员</text>
+      <text class="info-chip chip-red">⚡ 首课30分钟免费试听</text>
+    </view>
+  </view>
+
+  <!-- Results header -->
+  <view class="result-header">
+    <view class="result-left">
+      <view class="result-title serif">为您精选的 <text class="brand-green">{{matches.length}}</text> 位老师</view>
+      <view class="result-sub">按教材匹配度 + 距离 + 评分排序，0平台抽成</view>
+    </view>
+    <picker bindchange="setSort" value="{{sortIdx}}" range="{{sortOptions}}">
+      <view class="sort-picker">{{sortOptions[sortIdx]}} ▾</view>
+    </picker>
+  </view>
+
+  <!-- Tutor cards -->
+  <view
+    wx:for="{{matches}}"
+    wx:key="id"
+    class="card match-card"
+    data-id="{{item.id}}"
+    bindtap="goDetail"
+  >
+    <view class="match-top">
+      <view class="match-left">
+        <view class="match-avatar serif" style="background:{{item.color}}">{{item.name[0]}}</view>
+        <view class="match-pct-label">匹配度</view>
+        <view class="match-pct brand-green">{{item.match}}%</view>
+      </view>
+
+      <view class="match-info">
+        <view class="match-name-row">
+          <text class="match-name">{{item.name}} 老师</text>
+          <text wx:if="{{item.id === bestId}}" class="stamp">🏆 最佳匹配</text>
+          <text class="match-dist">📍 {{item.distText}}km</text>
+        </view>
+        <view class="match-school">{{item.school}}</view>
+
+        <view class="match-bar">
+          <view class="match-bar-fill" style="width:{{item.match}}%"></view>
+        </view>
+
+        <view class="book-exp">
+          <view class="book-exp-label">📘 本书教学经历</view>
+          <view class="book-exp-text">{{item.bookExp}}</view>
+        </view>
+
+        <view class="highlight">"{{item.highlight}}"</view>
+
+        <view class="tag-row">
+          <text
+            wx:for="{{item.tagList}}"
+            wx:for-item="tag"
+            wx:key="text"
+            class="tag {{tag.gift ? 'tag-gift' : ''}}"
+          >{{tag.text}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="match-footer">
+      <view class="meta-line">⭐ {{item.rating}} ({{item.reviews}}) · 教龄 {{item.years}}年 · 距离 {{item.distText}}km</view>
+      <view class="price-line">
+        <text class="price serif">¥{{item.price}}</text>
+        <text class="price-l">/课时 · 老师自主定价</text>
+      </view>
+      <view class="btn-row">
+        <view class="btn-sm btn-sm-outline" catchtap="goDetail" data-id="{{item.id}}">查看详情</view>
+        <view class="btn-sm btn-sm-green" catchtap="goChat" data-id="{{item.id}}">💬 直接联系</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Empty state -->
+  <view wx:if="{{matches.length === 0}}" class="empty">
+    <view class="empty-icon">😕</view>
+    <view class="empty-text">暂时没有匹配这本教材的老师</view>
+    <view class="empty-sub">换一本教材试试，或浏览全部老师</view>
+    <view class="btn-primary empty-btn" bindtap="goTutors">浏览全部老师</view>
+  </view>
+
+  <!-- Explainer -->
+  <view class="card explain-card">
+    <view class="explain-title serif">🤔 为什么匹配度重要？</view>
+    <view class="explain-text">其他平台推荐老师只看"教过小学数学"——但小学数学有很多版本：人教版、北师大版、苏教版。<text class="explain-strong">我们的老师每一位都上传了自己教过的教材版本</text>，确保推荐的老师真的懂您孩子课本上的每一页。</view>
+  </view>
+
+</view>

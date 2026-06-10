@@ -1,0 +1,66 @@
+<!-- pages/books/books.wxml -->
+
+<!-- Header -->
+<view class="page-header">
+  <view class="header-eyebrow brand-orange">📚 已覆盖 {{totalBooks}} 本合作教材</view>
+  <view class="header-title serif">按课本找老师</view>
+  <view class="header-sub">你孩子用的每一本教材，都有教过它的老师</view>
+  <input
+    class="search-input"
+    placeholder="搜索教材、学科、版本..."
+    value="{{searchText}}"
+    bindinput="onSearchInput"
+    confirm-type="search"
+  />
+</view>
+
+<!-- Grade sections -->
+<view class="sections" wx:if="{{total > 0}}">
+  <view
+    wx:for="{{sections}}"
+    wx:key="grade"
+    wx:for-item="section"
+    class="section"
+  >
+    <view class="section-header">
+      <text class="section-title serif">{{section.grade}}</text>
+      <text class="section-count">{{section.count}} 本教材</text>
+    </view>
+
+    <view class="book-grid">
+      <view
+        wx:for="{{section.books}}"
+        wx:key="key"
+        wx:for-item="book"
+        class="book-item"
+        data-key="{{book.key}}"
+        bindtap="goMatch"
+      >
+        <view class="book-cover" style="background:{{book.color}}">
+          <view class="cover-series">{{book.series}}版</view>
+          <view class="cover-main">
+            <view class="cover-subject serif">{{book.subject}}</view>
+            <view class="cover-level serif">{{book.level}}</view>
+          </view>
+          <view class="cover-hint">👆 点击匹配老师</view>
+        </view>
+        <view class="book-title">{{book.title}}</view>
+        <view class="book-tutors">
+          <text class="badge-green">{{book.tutorCount}} 位老师教过</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- Empty search state -->
+<view wx:if="{{total === 0}}" class="empty">
+  <view class="empty-icon">📖</view>
+  <view class="empty-text">没有找到「{{searchText}}」相关教材</view>
+  <view class="empty-sub" bindtap="clearSearch">清除搜索，查看全部教材</view>
+</view>
+
+<!-- Footer note -->
+<view wx:if="{{total > 0}}" class="footer-note">
+  📚 扫描书内二维码可直达匹配页 · 云南出版集团合作教材
+</view>

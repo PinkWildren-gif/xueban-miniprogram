@@ -1,0 +1,9 @@
+{
+  "name": "seedTutors",
+  "version": "1.0.0",
+  "description": "XueBan cloud function: seedTutors",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

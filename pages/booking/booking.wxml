@@ -1,0 +1,98 @@
+<!-- pages/booking/booking.wxml -->
+
+<!-- ===== Success view (replaces form after submit) ===== -->
+<view wx:if="{{submitted}}" class="success-wrap">
+  <view class="success-icon">✅</view>
+  <view class="success-title serif">试听申请已发送</view>
+  <view class="success-summary">{{submittedSummary}}</view>
+  <view class="success-sub">{{tutor.name}} 老师将在消息中与您确认具体时间，请留意消息提醒。试听 30 分钟完全免费，不满意不收取任何费用。</view>
+  <view class="btn-primary success-btn" bindtap="goChat">💬 发消息给老师</view>
+  <view class="btn-secondary success-btn" bindtap="goMy">📋 查看我的预约</view>
+</view>
+
+<!-- ===== Booking form ===== -->
+<view wx:elif="{{tutor}}" class="container">
+
+  <!-- Tutor summary card -->
+  <view class="card tutor-summary">
+    <view class="avatar-circle" style="background:{{tutor.color}}">{{tutor.name[0]}}</view>
+    <view class="summary-info">
+      <view class="summary-name">{{tutor.name}} 老师</view>
+      <view class="summary-school">{{tutor.school}}</view>
+      <view class="summary-meta">
+        <text class="summary-price serif">¥{{tutor.price}}</text>
+        <text class="summary-price-l">/课时</text>
+        <text class="summary-rating">⭐ {{tutor.rating}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Double-Reduction compliance banner -->
+  <view wx:if="{{isK9Academic}}" class="compliance-banner">🛡️ 双减政策：义务教育阶段学科类辅导仅限周一至周五非节假日进行，且不晚于20:30结束。周末与寒暑假时段不可预约。</view>
+
+  <!-- Date strip -->
+  <view class="section-title">选择日期</view>
+  <scroll-view scroll-x class="date-strip">
+    <view
+      wx:for="{{days}}"
+      wx:key="label"
+      class="date-chip {{item.disabled ? 'date-disabled' : ''}} {{selectedDateIdx === index ? 'date-active' : ''}}"
+      data-idx="{{index}}"
+      bindtap="selectDate"
+    >
+      <view class="date-weekday">{{item.weekday}}</view>
+      <view class="date-label">{{item.label}}</view>
+      <view wx:if="{{item.disabled}}" class="date-ban">{{item.banLabel}}</view>
+    </view>
+  </scroll-view>
+
+  <!-- Time slot grid -->
+  <view class="section-title">选择时间<text wx:if="{{isK9Academic}}" class="section-hint">（课程 60 分钟，20:30 前结束）</text></view>
+  <view class="slot-grid">
+    <view
+      wx:for="{{timeSlots}}"
+      wx:key="*this"
+      class="slot-chip {{selectedTime === item ? 'slot-active' : ''}}"
+      data-time="{{item}}"
+      bindtap="selectTime"
+    >{{item}}</view>
+  </view>
+  <view wx:if="{{timeSlots.length === 0}}" class="slot-empty">{{slotEmptyHint}}</view>
+
+  <!-- Mode selector -->
+  <view class="section-title">上课方式</view>
+  <view class="mode-row">
+    <view
+      wx:for="{{modes}}"
+      wx:key="*this"
+      class="mode-chip {{selectedMode === item ? 'mode-active' : ''}}"
+      data-mode="{{item}}"
+      bindtap="selectMode"
+    >{{item === '上门' ? '🏠' : item === '线上' ? '💻' : item === '户外' ? '🌳' : '🏫'}} {{item}}</view>
+  </view>
+
+  <!-- Note -->
+  <view class="section-title">给老师留言（选填）</view>
+  <view class="note-box">
+    <textarea
+      class="note-input"
+      placeholder="告诉老师孩子的年级、教材版本和目前的难点…"
+      placeholder-class="note-placeholder"
+      maxlength="200"
+      value="{{note}}"
+      bindinput="onNoteInput"
+    />
+    <view class="note-counter">{{noteLen}}/200</view>
+  </view>
+
+  <!-- Price box -->
+  <view class="price-box">
+    <view class="price-trial">试听 30 分钟 · 免费</view>
+    <view class="price-formal">正式课 ¥{{tutor.price}}/课时 · 学费 100% 归老师，平台 0 抽成</view>
+  </view>
+
+  <!-- Submit -->
+  <view class="btn-primary submit-btn {{canSubmit ? '' : 'submit-disabled'}}" bindtap="submit">发送试听申请</view>
+  <view class="submit-hint">提交后老师将尽快与您确认，试听前不收取任何费用</view>
+
+</view>

@@ -2,8 +2,17 @@
   "pages": [
     "pages/index/index",
     "pages/tutors/tutors",
+    "pages/messages/messages",
+    "pages/my/my",
     "pages/tutor-detail/tutor-detail",
-    "pages/my/my"
+    "pages/match/match",
+    "pages/books/books",
+    "pages/chat/chat",
+    "pages/booking/booking",
+    "pages/tutor-signup/tutor-signup",
+    "pages/compliance/compliance",
+    "pages/terms/terms",
+    "pages/privacy/privacy"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,6 +34,10 @@
       {
         "pagePath": "pages/tutors/tutors",
         "text": "找老师"
+      },
+      {
+        "pagePath": "pages/messages/messages",
+        "text": "消息"
       },
       {
         "pagePath": "pages/my/my",

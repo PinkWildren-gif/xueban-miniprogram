@@ -8,6 +8,20 @@ page {
   line-height: 1.5;
 }
 
+/* Reset WeChat's native <button> chrome (::after border, line-height 2.55,
+   default padding) so .btn-primary/.btn-secondary render as designed. */
+button {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  font-size: inherit;
+  line-height: inherit;
+  border-radius: 0;
+}
+button::after {
+  border: none;
+}
+
 /* Reusable utility classes */
 .brand-green { color: #1a5d3a; }
 .bg-brand-green { background-color: #1a5d3a; }

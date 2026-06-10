@@ -1,15 +1,29 @@
 // pages/index/index.js
-const { TUTORS } = require('../../utils/data.js');
+const { TUTORS, BOOKS } = require('../../utils/data.js');
+const store = require('../../utils/store.js');
 
 Page({
   data: {
-    featured: []
+    featured: [],
+    showCompliance: false
   },
 
   onLoad() {
     // Show the 4 featured tutors on home page
     const featured = TUTORS.filter(t => t.featured).slice(0, 4);
-    this.setData({ featured });
+    this.setData({
+      featured,
+      // Stats are derived from data so they stay in sync with the catalog
+      tutorCount: TUTORS.length,
+      bookCount: BOOKS.length,
+      // Gate first-time users with the compliance notice
+      showCompliance: !store.hasAcknowledgedCompliance()
+    });
+  },
+
+  onComplianceAgree() {
+    store.acknowledgeCompliance();
+    this.setData({ showCompliance: false });
   },
 
   onScan() {
@@ -19,11 +33,11 @@ Page({
       scanType: ['qrCode', 'barCode'],
       success: (res) => {
         console.log('Scanned:', res.result);
-        // Future: parse book ISBN, route to match page
-        wx.showModal({
-          title: '扫码成功',
-          content: `识别到：${res.result}\n\n（演示版本，真实扫码将跳转到"匹配老师"页面）`,
-          showCancel: false
+        // Demo: route every scan to the match page with a sample book key.
+        // Production will parse the QR payload (ISBN / book code) into a real book key.
+        wx.navigateTo({
+          url: '/pages/match/match?book=' + encodeURIComponent('人教·数学·五上') +
+               '&raw=' + encodeURIComponent(res.result)
         });
       },
       fail: () => {
@@ -34,6 +48,10 @@ Page({
 
   goTutors() {
     wx.switchTab({ url: '/pages/tutors/tutors' });
+  },
+
+  goBooks() {
+    wx.navigateTo({ url: '/pages/books/books' });
   },
 
   goTutor(e) {

@@ -1,5 +1,10 @@
 /* pages/tutor-detail/tutor-detail.wxss */
 
+/* Clear the fixed .cta-bar so the last content (compliance card) can scroll fully into view */
+page {
+  padding-bottom: calc(180rpx + env(safe-area-inset-bottom));
+}
+
 .hero {
   background: #ffffff;
   padding: 32rpx 24rpx;
@@ -65,6 +70,11 @@
   gap: 8rpx;
 }
 
+/* Padded wrapper so .card sections are not full-bleed (matches .tutor-list convention) */
+.detail-body {
+  padding: 0 24rpx;
+}
+
 .section-title {
   font-size: 32rpx;
   font-weight: 700;
@@ -120,6 +130,15 @@
   border-radius: 12rpx;
   font-size: 24rpx;
   color: #92400E;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-arrow {
+  font-size: 32rpx;
+  color: #D97706;
+  line-height: 1;
 }
 
 .cred-grid {
@@ -135,6 +154,82 @@
   padding: 12rpx 20rpx;
   border-radius: 12rpx;
   font-size: 24rpx;
+}
+
+/* Parent reviews */
+.review-item {
+  padding: 20rpx 0;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+/* Applied from WXML via index check (:last-of-type is unreliable in WXSS
+   and would miss when .review-toggle is the last sibling) */
+.review-item-last {
+  border-bottom: none;
+}
+
+.review-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.review-parent {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.review-avatar {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: #E5E7EB;
+  color: #4B5563;
+  font-size: 24rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-name {
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.review-date {
+  font-size: 22rpx;
+  color: #9CA3AF;
+}
+
+.review-stars {
+  font-size: 24rpx;
+  color: #D97706;
+  margin-bottom: 8rpx;
+  letter-spacing: 4rpx;
+}
+
+.review-text {
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #4B5563;
+}
+
+.review-empty {
+  text-align: center;
+  padding: 40rpx 0;
+  font-size: 26rpx;
+  color: #9CA3AF;
+}
+
+.review-toggle {
+  text-align: center;
+  padding: 20rpx 0 4rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #1a5d3a;
 }
 
 .compliance-card {
@@ -165,7 +260,7 @@
   right: 0;
   background: #ffffff;
   border-top: 1px solid #F3F4F6;
-  padding: 20rpx 24rpx env(safe-area-inset-bottom);
+  padding: 20rpx 24rpx calc(20rpx + env(safe-area-inset-bottom));
   display: flex;
   align-items: center;
   gap: 16rpx;
@@ -188,8 +283,17 @@
 }
 
 .cta-btn {
-  flex: 1;
   margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.cta-btn-trial {
+  flex: 1;
+}
+
+.cta-btn-contact {
+  flex: 1.5;
 }
 
 .loading {

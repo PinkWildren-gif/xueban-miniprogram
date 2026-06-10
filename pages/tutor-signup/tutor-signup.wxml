@@ -1,0 +1,306 @@
+<!-- pages/tutor-signup/tutor-signup.wxml -->
+
+<!-- ========== Status screen: application already submitted, under review ========== -->
+<view wx:if="{{view === 'status'}}" class="container page-pad">
+  <view class="card status-hero">
+    <view class="status-icon">⏳</view>
+    <view class="badge-orange status-chip">审核中</view>
+    <view class="status-title serif">申请已提交，正在人工审核</view>
+    <view class="status-sub">学伴团队将在 1-3 个工作日内完成人工审核，结果将通过站内消息通知您。</view>
+    <view class="verify-row">
+      <view class="verify-item">
+        <view class="verify-icon">🪪</view>
+        <view class="verify-name">实名核验</view>
+      </view>
+      <view class="verify-item">
+        <view class="verify-icon">🎓</view>
+        <view class="verify-name">学历核验</view>
+      </view>
+      <view class="verify-item">
+        <view class="verify-icon">📜</view>
+        <view class="verify-name">教师资格</view>
+      </view>
+    </view>
+    <view class="verify-note">平台对每位入驻老师进行三重核验，保障家长与学生安全</view>
+  </view>
+
+  <view class="card">
+    <view class="summary-title">已提交信息</view>
+    <view wx:for="{{summaryRows}}" wx:key="label" class="summary-row">
+      <text class="summary-label">{{item.label}}</text>
+      <text class="summary-value">{{item.value}}</text>
+    </view>
+  </view>
+
+  <view class="btn-secondary" bindtap="restartApplication">重新填写</view>
+</view>
+
+<!-- ========== Success screen ========== -->
+<view wx:elif="{{view === 'success'}}" class="container page-pad">
+  <view class="card status-hero">
+    <view class="status-icon">✅</view>
+    <view class="status-title serif">申请已提交</view>
+    <view class="status-sub">审核结果将在 1-3 个工作日内通过消息通知您</view>
+    <view class="verify-note">感谢您加入学伴 · 您的课时费 100% 归您，平台 0 抽成</view>
+  </view>
+  <view class="btn-primary" bindtap="goHome">返回首页</view>
+</view>
+
+<!-- ========== Multi-step application form ========== -->
+<view wx:else class="container page-pad">
+
+  <!-- Hero -->
+  <view class="hero">
+    <view class="hero-pill">🎁 首批 500 位老师享一年免费推荐位</view>
+    <view class="hero-title serif">加入学伴 · 课时费 100% 归您</view>
+    <view class="hero-sub">4 步完成入驻 · 提交后 1-3 个工作日完成人工审核</view>
+  </view>
+
+  <!-- Stepper -->
+  <view class="stepper">
+    <block wx:for="{{steps}}" wx:key="*this">
+      <view class="step {{step > index + 1 ? 'done' : (step === index + 1 ? 'active' : '')}}">
+        <view class="step-dot">{{step > index + 1 ? '✓' : index + 1}}</view>
+        <view class="step-label">{{item}}</view>
+      </view>
+      <view wx:if="{{index < 3}}" class="step-bar {{step > index + 1 ? 'done' : ''}}"></view>
+    </block>
+  </view>
+
+  <!-- ===== Step 1 基本信息 ===== -->
+  <view wx:if="{{step === 1}}" class="card">
+    <view class="panel-head">
+      <view class="panel-icon">📝</view>
+      <view class="panel-head-text">
+        <view class="panel-step">STEP 1 / 4</view>
+        <view class="panel-title serif">基本信息</view>
+        <view class="panel-sub">让家长认识真实的您，信息仅用于平台审核与展示</view>
+      </view>
+    </view>
+
+    <view class="field">
+      <view class="field-label">姓名</view>
+      <input class="form-input" placeholder="请输入真实姓名" placeholder-class="ph" value="{{name}}" data-field="name" bindinput="onField" />
+    </view>
+
+    <view class="row-2">
+      <view class="field col">
+        <view class="field-label">性别</view>
+        <picker mode="selector" range="{{genders}}" value="{{genderIdx}}" bindchange="onGender">
+          <view class="form-input picker-box {{gender ? '' : 'ph'}}">
+            <text>{{gender || '请选择'}}</text>
+            <text class="picker-arrow">▾</text>
+          </view>
+        </picker>
+      </view>
+      <view class="field col">
+        <view class="field-label">年龄</view>
+        <input class="form-input" type="number" placeholder="如 28" placeholder-class="ph" value="{{age}}" data-field="age" bindinput="onField" />
+      </view>
+    </view>
+
+    <view class="field">
+      <view class="field-label">毕业院校 / 资质背景</view>
+      <input class="form-input" placeholder="如：云南师范大学 · 数学教育硕士" placeholder-class="ph" value="{{school}}" data-field="school" bindinput="onField" />
+    </view>
+
+    <view class="row-2">
+      <view class="field col">
+        <view class="field-label">所在区域</view>
+        <picker mode="selector" range="{{districts}}" value="{{districtIdx}}" bindchange="onDistrict">
+          <view class="form-input picker-box {{district ? '' : 'ph'}}">
+            <text>{{district || '请选择'}}</text>
+            <text class="picker-arrow">▾</text>
+          </view>
+        </picker>
+      </view>
+      <view class="field col">
+        <view class="field-label">教龄（年）</view>
+        <input class="form-input" type="number" placeholder="如 5" placeholder-class="ph" value="{{years}}" data-field="years" bindinput="onField" />
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== Step 2 教学信息 ===== -->
+  <view wx:if="{{step === 2}}" class="card">
+    <view class="panel-head">
+      <view class="panel-icon">📚</view>
+      <view class="panel-head-text">
+        <view class="panel-step">STEP 2 / 4</view>
+        <view class="panel-title serif">教学信息</view>
+        <view class="panel-sub">学伴按教材精准匹配，填得越准，推荐越精准</view>
+      </view>
+    </view>
+
+    <view class="field">
+      <view class="field-label">教学类别</view>
+      <view class="chips-wrap">
+        <view
+          wx:for="{{categories}}"
+          wx:key="key"
+          class="tag {{category === item.key ? 'selected' : ''}}"
+          data-val="{{item.key}}"
+          bindtap="setCategory"
+        >{{item.icon}} {{item.label}}</view>
+      </view>
+    </view>
+
+    <view class="field">
+      <view class="field-label">教授科目（可多选）</view>
+      <view class="chips-wrap">
+        <view
+          wx:for="{{subjects}}"
+          wx:key="*this"
+          class="tag {{subjectsSel[item] ? 'selected' : ''}}"
+          data-val="{{item}}"
+          bindtap="toggleSubject"
+        >{{item}}</view>
+      </view>
+    </view>
+
+    <view class="field">
+      <view class="field-label">面向年级（可多选）</view>
+      <view class="chips-wrap">
+        <view
+          wx:for="{{grades}}"
+          wx:key="*this"
+          class="tag {{gradesSel[item] ? 'selected' : ''}}"
+          data-val="{{item}}"
+          bindtap="toggleGrade"
+        >{{item}}</view>
+      </view>
+    </view>
+
+    <view class="field">
+      <view class="field-label">课时费</view>
+      <view class="price-row">
+        <text class="price-symbol serif">¥</text>
+        <input class="form-input price-input" type="number" placeholder="如 150" placeholder-class="ph" value="{{price}}" data-field="price" bindinput="onField" />
+        <text class="price-suffix">/ 课时</text>
+      </view>
+      <view class="field-hint">💰 老师自主定价，平台 0 抽成</view>
+    </view>
+
+    <view class="field">
+      <view class="field-label">授课方式（可多选）</view>
+      <view class="chips-wrap">
+        <view
+          wx:for="{{modes}}"
+          wx:key="*this"
+          class="tag {{modesSel[item] ? 'selected' : ''}}"
+          data-val="{{item}}"
+          bindtap="toggleMode"
+        >{{item}}</view>
+      </view>
+    </view>
+
+    <!-- Textbook multi-select: only for 学科 category -->
+    <view wx:if="{{category === '学科'}}" class="field books-field">
+      <view class="books-header" bindtap="toggleBooksOpen">
+        <view class="field-label books-label">📘 精通教材（选填）</view>
+        <view class="books-toggle">{{bookCount > 0 ? '已选 ' + bookCount + ' 本 · ' : ''}}{{booksOpen ? '收起 ▲' : '展开 ▼'}}</view>
+      </view>
+      <view class="field-hint">家长扫课本找老师时，系统优先推荐教过这本教材的您</view>
+      <block wx:if="{{booksOpen}}">
+        <input class="form-input book-search" placeholder="搜索教材，如：人教 数学" placeholder-class="ph" value="{{bookSearch}}" bindinput="onBookSearch" />
+        <scroll-view scroll-y class="book-list">
+          <view
+            wx:for="{{filteredBooks}}"
+            wx:key="key"
+            class="book-row {{bookSel[item.key] ? 'selected' : ''}}"
+            data-key="{{item.key}}"
+            bindtap="toggleBook"
+          >
+            <view class="book-spine" style="background:{{item.color}}"></view>
+            <view class="book-title">{{item.title}}</view>
+            <view wx:if="{{bookSel[item.key]}}" class="book-check">✓</view>
+          </view>
+          <view wx:if="{{filteredBooks.length === 0}}" class="book-empty">没有匹配的教材</view>
+        </scroll-view>
+      </block>
+    </view>
+  </view>
+
+  <!-- ===== Step 3 资质上传 ===== -->
+  <view wx:if="{{step === 3}}" class="card">
+    <view class="panel-head">
+      <view class="panel-icon">🎓</view>
+      <view class="panel-head-text">
+        <view class="panel-step">STEP 3 / 4</view>
+        <view class="panel-title serif">资质上传</view>
+        <view class="panel-sub">真实的资质让家长更信任您，材料仅用于平台内部审核，绝不对外公开</view>
+      </view>
+    </view>
+
+    <view class="upload-grid">
+      <view
+        wx:for="{{uploadSlots}}"
+        wx:key="key"
+        class="upload-box {{images[item.key] ? 'filled' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="chooseImage"
+      >
+        <block wx:if="{{images[item.key]}}">
+          <image class="upload-thumb" src="{{images[item.key]}}" mode="aspectFill" />
+          <view class="upload-done">{{item.label}} ✓</view>
+        </block>
+        <block wx:else>
+          <view class="upload-icon">📎</view>
+          <view class="upload-label">{{item.label}}<text wx:if="{{!item.required}}" class="upload-optional">（选填）</text></view>
+          <view class="upload-hint">{{item.hint}}</view>
+          <view class="upload-cta">点击上传</view>
+        </block>
+      </view>
+    </view>
+
+    <view class="demo-note">💡 演示版本：图片仅本地预览，不会上传</view>
+  </view>
+
+  <!-- ===== Step 4 平台承诺 ===== -->
+  <view wx:if="{{step === 4}}" class="card">
+    <view class="panel-head">
+      <view class="panel-icon red-bg">📜</view>
+      <view class="panel-head-text">
+        <view class="panel-step">STEP 4 / 4 · 必须完成</view>
+        <view class="panel-title serif">"双减"政策平台承诺</view>
+        <view class="panel-sub">作为学伴入驻老师，您须了解并承诺遵守以下规则</view>
+      </view>
+    </view>
+
+    <view class="rule-box rule-red">
+      <view class="rule-box-title">🚫 平台红线</view>
+      <view class="rule-item">× 不得在法定节假日、周末、寒暑假为义务教育阶段学生提供学科类培训</view>
+      <view class="rule-item">× 不得以"一对一""住家教师"等隐形变异形式开展学科类培训</view>
+      <view class="rule-item">× 不得诱导家长绕过平台达成违规协议</view>
+    </view>
+    <view class="rule-box rule-green">
+      <view class="rule-box-title">✅ 不受限制的教学</view>
+      <view class="rule-item">素质教育、艺术体育、编程兴趣类、高中学科辅导、成人教育均可自由开展</view>
+    </view>
+
+    <view class="pledge-row {{checks[0] ? 'on' : ''}}" data-idx="0" bindtap="toggleCheck">
+      <view class="checkbox {{checks[0] ? 'checked' : ''}}">{{checks[0] ? '✓' : ''}}</view>
+      <view class="pledge-text">我承诺遵守《双减》政策，不在周末、法定节假日、寒暑假进行义务教育阶段学科类培训。</view>
+    </view>
+    <view class="pledge-row {{checks[1] ? 'on' : ''}}" data-idx="1" bindtap="toggleCheck">
+      <view class="checkbox {{checks[1] ? 'checked' : ''}}">{{checks[1] ? '✓' : ''}}</view>
+      <view class="pledge-text">我保证资质材料真实有效，接受平台实名、学历、教师资格三重核验。</view>
+    </view>
+    <view class="pledge-row {{checks[2] ? 'on' : ''}}" data-idx="2" bindtap="toggleCheck">
+      <view class="checkbox {{checks[2] ? 'checked' : ''}}">{{checks[2] ? '✓' : ''}}</view>
+      <view class="pledge-text">我承诺不诱导学员绕过平台私下交易（平台 0 抽成，无需绕过）。</view>
+    </view>
+    <view class="pledge-row {{checks[3] ? 'on' : ''}}" data-idx="3" bindtap="toggleCheck">
+      <view class="checkbox {{checks[3] ? 'checked' : ''}}">{{checks[3] ? '✓' : ''}}</view>
+      <view class="pledge-text">我已阅读并同意<text class="link" catchtap="goTerms">《服务条款》</text>与<text class="link" catchtap="goPrivacy">《隐私政策》</text>。</view>
+    </view>
+  </view>
+
+  <!-- Nav buttons -->
+  <view class="nav-row">
+    <view wx:if="{{step > 1}}" class="btn-secondary nav-btn" bindtap="prevStep">上一步</view>
+    <view wx:if="{{step < 4}}" class="btn-primary nav-btn" bindtap="nextStep">下一步</view>
+    <view wx:if="{{step === 4}}" class="btn-primary nav-btn {{allChecked ? '' : 'disabled'}}" bindtap="submitApplication">✓ 提交入驻申请</view>
+  </view>
+  <view wx:if="{{step === 4}}" class="submit-note">提交后，学伴团队将在 1-3 个工作日内完成人工审核</view>
+</view>

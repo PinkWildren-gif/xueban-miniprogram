@@ -1,0 +1,100 @@
+/* pages/messages/messages.wxss */
+
+.conv-list {
+  background: #ffffff;
+}
+
+.conv-row {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 24rpx;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.conv-row:active {
+  background: #F9FAFB;
+}
+
+.avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.conv-avatar {
+  width: 96rpx;
+  height: 96rpx;
+}
+
+.unread-badge {
+  position: absolute;
+  top: -6rpx;
+  right: -10rpx;
+  min-width: 32rpx;
+  height: 32rpx;
+  padding: 0 8rpx;
+  box-sizing: border-box;
+  background: #EF4444;
+  color: #ffffff;
+  font-size: 20rpx;
+  font-weight: 700;
+  line-height: 32rpx;
+  text-align: center;
+  border-radius: 999rpx;
+  border: 2rpx solid #ffffff;
+}
+
+.conv-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.conv-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6rpx;
+}
+
+.conv-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.conv-time {
+  font-size: 22rpx;
+  color: #9CA3AF;
+  flex-shrink: 0;
+  margin-left: 16rpx;
+}
+
+.conv-preview {
+  font-size: 25rpx;
+  color: #6B7280;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 160rpx 60rpx;
+}
+
+.empty-icon {
+  font-size: 96rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  font-size: 30rpx;
+  color: #6B7280;
+  margin-bottom: 40rpx;
+}
+
+.empty-btn {
+  display: inline-block;
+  padding: 20rpx 64rpx;
+}

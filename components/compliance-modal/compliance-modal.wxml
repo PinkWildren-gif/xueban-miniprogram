@@ -1,0 +1,25 @@
+<!-- components/compliance-modal/compliance-modal.wxml -->
+<!-- Mask is a sibling (not ancestor) of the card so catchtouchmove on it
+     can't swallow scrolling inside the card on short screens. -->
+<view wx:if="{{show}}" class="modal-wrap">
+  <view class="modal-mask" catchtap="noop" catchtouchmove="noop"></view>
+  <view class="modal-card">
+    <view class="modal-icon">🛡️</view>
+    <view class="modal-title serif">双减政策重要提示</view>
+
+    <view class="modal-bullets">
+      <view class="bullet">① 义务教育阶段（小学-初三）学科类辅导不得在周末、国家法定节假日、寒暑假进行</view>
+      <view class="bullet">② 学科类辅导仅限周一至周五进行，线下不晚于20:30、线上不晚于21:00结束</view>
+      <view class="bullet">③ 艺术、体育、编程等素质类课程不受时段限制</view>
+      <view class="bullet">④ 学伴是教师信息服务平台，不组织培训、不收取学费</view>
+    </view>
+
+    <view class="modal-links">
+      <text class="modal-link" catchtap="goTerms">服务条款</text>
+      <text class="modal-link-sep">·</text>
+      <text class="modal-link" catchtap="goPrivacy">隐私政策</text>
+    </view>
+
+    <button class="btn-primary agree-btn" catchtap="onAgree">我已了解并同意</button>
+  </view>
+</view>

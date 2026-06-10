@@ -1,0 +1,89 @@
+/* components/compliance-modal/compliance-modal.wxss */
+
+.modal-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48rpx;
+  box-sizing: border-box;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 32rpx;
+  padding: 48rpx 40rpx 40rpx;
+  box-sizing: border-box;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-icon {
+  font-size: 64rpx;
+  text-align: center;
+  margin-bottom: 16rpx;
+}
+
+.modal-title {
+  font-size: 38rpx;
+  color: #1a5d3a;
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+
+.modal-bullets {
+  margin-bottom: 32rpx;
+}
+
+.bullet {
+  font-size: 26rpx;
+  color: #4B5563;
+  line-height: 1.6;
+  margin-bottom: 16rpx;
+  padding: 16rpx 20rpx;
+  background: #FDF9F0;
+  border-radius: 16rpx;
+}
+
+.bullet:last-child {
+  margin-bottom: 0;
+}
+
+.modal-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 32rpx;
+}
+
+.modal-link {
+  font-size: 24rpx;
+  color: #1a5d3a;
+  text-decoration: underline;
+}
+
+.modal-link-sep {
+  font-size: 24rpx;
+  color: #9CA3AF;
+}
+
+.agree-btn {
+  width: 100%;
+}

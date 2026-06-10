@@ -31,7 +31,19 @@
     "enableEngineNative": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "minifyWXML": true
+    "minifyWXML": true,
+    "compileWorklet": false,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
   },
   "compileType": "miniprogram",
   "libVersion": "3.1.0",
@@ -42,5 +54,6 @@
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "__COMMENT__": "Replace 'touristappid' with your own AppID from https://mp.weixin.qq.com/ → 设置 → 开发设置 → AppID(小程序ID)"
+  "__COMMENT__": "Replace 'touristappid' with your own AppID from https://mp.weixin.qq.com/ → 设置 → 开发设置 → AppID(小程序ID)",
+  "simulatorPluginLibVersion": {}
 }

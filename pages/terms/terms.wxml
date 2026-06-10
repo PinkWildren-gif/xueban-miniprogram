@@ -1,0 +1,193 @@
+<!-- pages/terms/terms.wxml -->
+<view class="container legal-page">
+
+  <!-- Header -->
+  <view class="page-header">
+    <view class="eyebrow">LEGAL · TERMS OF SERVICE</view>
+    <view class="page-title serif">学伴平台服务条款</view>
+    <view class="page-meta">版本 v1.0 · 发布日期 2026年4月1日 · 生效日期 2026年4月15日</view>
+  </view>
+
+  <!-- Quick summary -->
+  <view class="summary-box">
+    <view class="summary-label">📋 简要说明（非法律条款）</view>
+    <view class="summary-text">学伴是<text class="strong">教师信息服务平台</text>，我们帮助家长找到合适的老师，但我们<text class="strong">不组织教学、不雇佣老师、不收课时费</text>。使用本平台前，请确保您已阅读并同意以下条款。<text class="warn-strong">特别注意：本平台严格遵守"双减"政策，义务教育阶段学科类家教存在明确限制，请仔细阅读第 5 条。</text></view>
+  </view>
+
+  <!-- §1 关于学伴 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§1</text>
+      <text class="sec-title serif">关于学伴</text>
+    </view>
+    <view class="body-text">学伴（"XUEBAN"、"本平台"、"我们"）是由<text class="strong">云南学伴科技有限公司</text>（以下简称"公司"）运营的教师信息服务平台。公司注册地为云南省昆明市。</view>
+    <view class="body-text">备案号：滇ICP备XXXXXXXX号（备案申请中）。</view>
+  </view>
+
+  <!-- §2 平台性质 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§2</text>
+      <text class="sec-title serif">平台性质</text>
+    </view>
+    <view class="highlight-box">学伴是教师信息服务平台，不是教育培训机构。我们不雇佣老师、不收取学费、不抽成。</view>
+    <view class="body-text">学伴是纯粹的<text class="strong">信息撮合平台</text>：</view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">我们展示注册教师的个人信息、资质和服务意向</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">我们不与任何教师建立劳动关系或雇佣关系</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">我们不统一定价，不参与教师与家长之间的费用结算</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">我们不组织、规划、实施或监督任何教学内容</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">教师与家长自主达成协议、自主履行、自主结算</text></view>
+  </view>
+
+  <!-- §3 注册与核验 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§3</text>
+      <text class="sec-title serif">用户注册与身份核验</text>
+    </view>
+    <view class="sub-title">3.1 家长用户</view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">须使用真实姓名、有效手机号注册</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">如为未成年学生家长，须提供监护人身份证明</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">须同意本条款及《隐私政策》方可开始使用</text></view>
+    <view class="sub-title">3.2 教师用户</view>
+    <view class="body-text">教师须通过本平台<text class="strong">三重核验</text>方可在平台展示：身份证实名认证（公安部身份认证系统核验）、学历证书核验（学信网在线核验）、教师资格证核验（如适用）。</view>
+    <view class="note">注：学伴不接受任何未通过核验的教师入驻。核验失败者，资料将在 30 日后自动销毁。</view>
+  </view>
+
+  <!-- §4 行为规范 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§4</text>
+      <text class="sec-title serif">用户行为规范</text>
+    </view>
+    <view class="body-text">使用本平台时，用户<text class="strong">不得</text>发布以下内容：</view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">任何违反中华人民共和国法律法规的内容</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">涉嫌欺诈、虚假宣传、夸大事实的内容</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">侵犯他人合法权益（隐私、肖像、名誉、知识产权等）的内容</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">歧视性、仇恨性、暴力性、色情性内容</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">未经核实的他人联系方式、家庭住址、学校信息</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">商业广告、推广链接（经学伴书面授权的除外）</text></view>
+  </view>
+
+  <!-- §5 双减政策与合规（legally critical — keep verbatim） -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§5</text>
+      <text class="sec-title serif">「双减」政策与合规 —— 请重点阅读</text>
+    </view>
+    <view class="warn-box">
+      <view class="warn-title">⚠️ 监管合规重要声明</view>
+      <view class="warn-text">根据《关于进一步减轻义务教育阶段学生作业负担和校外培训负担的意见》（国务院 2021 年 7 月），义务教育阶段学生（小学 1-6 年级、初中 1-3 年级）的学科类（语文、数学、英语、物理、化学、生物、历史、地理、道德与法治）校外培训受到严格限制。</view>
+    </view>
+
+    <view class="sub-title">5.1 义务教育阶段学科类培训限制</view>
+    <view class="body-text">本平台针对义务教育阶段（K-9）学科类培训需求，<text class="strong">严格禁止</text>以下行为：</view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">时间限制：</text>禁止在国家法定节假日、休息日（周六、周日）及寒暑假期间发布或承接义务教育阶段学科类家教订单，即学科类辅导仅限工作日进行</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">结束时间限制：</text>工作日义务教育阶段学科类辅导，线下不得晚于 20:30 结束，线上不得晚于 21:00 结束</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">形式限制：</text>禁止发布含"一对一"、"住家教师"、"小班课"、"集中辅导"等隐形变异培训形式的信息</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">内容限制：</text>禁止发布任何超纲、拔高、应试性质的义务教育学科培训需求</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">隐形合同禁止：</text>禁止家长与教师通过本平台之外的渠道达成违反以上限制的协议</text></view>
+
+    <view class="sub-title">5.2 不受限制的培训类别</view>
+    <view class="body-text">以下类别的家教服务<text class="strong">不受</text>上述时间和形式限制：</view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">素质教育类：</text>音乐、美术、书法、舞蹈、体育、围棋、象棋、编程（非应试）、演讲口才等</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">高中阶段学科辅导：</text>高中（10-12 年级）学生的学科类培训</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">成人教育：</text>大学生、成人的语言学习、职业技能、兴趣爱好培训</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">外语类：</text>非义务教育阶段学生的外语培训（如雅思、托福、英语口语等）</text></view>
+
+    <view class="sub-title">5.3 平台合规措施</view>
+    <view class="body-text">为确保合规，学伴采取以下措施：</view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">发布前风险提示：</text>用户在发布需求或承接订单前，系统强制弹出"双减"政策风险提示，须确认已阅读方可继续</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">关键词自动审核：</text>系统使用 AI + 人工双重机制，实时扫描所有文本，自动标记或拦截涉嫌违规的内容</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">日期时段限制：</text>系统自动禁止在节假日、周末、寒暑假时段发布或确认义务教育学科类订单</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">违规处置：</text>发现违规内容立即删除、警告或封禁账号，情节严重者配合监管部门调查</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">记录保存：</text>所有交易记录、沟通记录保存不少于 60 天，依法应监管部门调取</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">定期审计：</text>每季度进行第三方合规审计，审计报告公开发布于合规披露页面</text></view>
+
+    <view class="sub-title">5.4 平台定位与费用披露</view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">学伴仅为<text class="strong">教师信息服务平台</text>，不是教育培训机构，不组织、不参与任何教学活动</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">0 抽成：</text>学伴永远不从教师与家长之间的课时费中抽取任何费用</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text"><text class="strong">教师自主定价：</text>课时价格由教师自主设定，家长与教师自主协商、自主履行、自主结算</text></view>
+
+    <view class="link-row" bindtap="goCompliance">查看完整合规披露 →</view>
+  </view>
+
+  <!-- §6 收费与支付 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§6</text>
+      <text class="sec-title serif">收费与支付</text>
+    </view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">学伴基础版对家长免费使用；高级会员费为<text class="strong">信息服务费</text>，非课时费</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">教师基础入驻永久免费；增值服务（推荐位等）为信息展示服务费，<text class="strong">非抽成</text></text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">家长与教师之间的课时费由双方自主协商、自主结算，学伴不参与、不代收、不托管</text></view>
+  </view>
+
+  <!-- §7 知识产权 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§7</text>
+      <text class="sec-title serif">知识产权</text>
+    </view>
+    <view class="body-text">本平台的 LOGO、文案、UI 设计、数据库结构等均为公司所有。用户发布的内容（教师简介、评价等）其著作权归用户所有，但用户授予学伴免费、非独占的使用权，用于展示、推广和数据分析。</view>
+  </view>
+
+  <!-- §8 隐私与数据保护 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§8</text>
+      <text class="sec-title serif">隐私与数据保护</text>
+    </view>
+    <view class="body-text">学伴依据《中华人民共和国个人信息保护法》《中华人民共和国未成年人保护法》及相关规定处理用户信息。涉及未成年人信息的处理，我们严格遵守"最小必要原则"，14 周岁以下用户信息必须获得监护人明示同意方可收集。</view>
+    <view class="link-row" bindtap="goPrivacy">查看《隐私政策》 →</view>
+  </view>
+
+  <!-- §9 违规处理 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§9</text>
+      <text class="sec-title serif">违规处理与账号管理</text>
+    </view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">发布虚假信息或违规内容 → 警告 / 限期整改 / 删除内容 / 封禁账号</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">三次及以上违规 → 永久封禁账号，禁止重新注册</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">严重违反"双减"政策 → 立即封禁并报送监管部门</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">涉嫌犯罪的 → 立即停止服务并配合司法机关调查</text></view>
+  </view>
+
+  <!-- §10 免责声明 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§10</text>
+      <text class="sec-title serif">免责声明</text>
+    </view>
+    <view class="body-text">学伴尽力保证信息的准确性，但因以下情形造成的损失，学伴<text class="strong">不承担</text>法律责任：</view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">教师与家长自主达成协议后的合同纠纷（我们可协助调解）</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">因教师个人原因造成的教学质量问题</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">不可抗力（自然灾害、政策变化、技术故障等）</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">用户自身过失（如账号泄露、未按规定操作等）</text></view>
+  </view>
+
+  <!-- §11 变更与法律 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§11</text>
+      <text class="sec-title serif">条款变更与适用法律</text>
+    </view>
+    <view class="body-text">本条款重大修订将提前 <text class="strong">30 天</text>通过站内信或短信通知用户，修订后继续使用本平台即视为接受新版条款。本条款适用<text class="strong">中华人民共和国法律</text>；因本条款产生的争议，双方应友好协商，协商不成的，提交公司所在地（云南省昆明市）人民法院管辖。</view>
+  </view>
+
+  <!-- §12 联系我们 -->
+  <view class="card sec-card">
+    <view class="sec-head">
+      <text class="sec-num serif">§12</text>
+      <text class="sec-title serif">联系我们</text>
+    </view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">客服电话：0871-XXXXXXXX（工作日 9:00-18:00）</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">客服邮箱：support@xueban.cn</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">违规举报：report@xueban.cn（24 小时响应）</text></view>
+    <view class="li"><text class="li-dot">·</text><text class="li-text">公司地址：云南省昆明市五华区</text></view>
+  </view>
+
+  <view class="page-footer">更新日期 2026年6月 · 学伴 XUEBAN</view>
+
+</view>

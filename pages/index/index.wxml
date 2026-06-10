@@ -1,4 +1,6 @@
 <!-- pages/index/index.wxml — Home page -->
+<compliance-modal show="{{showCompliance}}" bind:agree="onComplianceAgree" />
+
 <view class="hero">
   <view class="tag">📚 云南出版集团官方合作</view>
   <view class="hero-title serif">
@@ -16,6 +18,9 @@
   <button class="btn-secondary" bindtap="goTutors">
     🔍  浏览全部老师
   </button>
+  <button class="btn-secondary books-btn" bindtap="goBooks">
+    📚 按课本找老师
+  </button>
 </view>
 
 <!-- Stats -->
@@ -25,12 +30,12 @@
     <view class="stat-l">平台抽成</view>
   </view>
   <view class="stat">
-    <view class="stat-n serif brand-green">24+</view>
+    <view class="stat-n serif brand-green">{{tutorCount}}</view>
     <view class="stat-l">认证老师</view>
   </view>
   <view class="stat">
-    <view class="stat-n serif brand-green">120+</view>
-    <view class="stat-l">教材匹配</view>
+    <view class="stat-n serif brand-green">{{bookCount}}</view>
+    <view class="stat-l">教材已收录</view>
   </view>
 </view>
 

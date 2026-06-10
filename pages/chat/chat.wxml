@@ -1,0 +1,65 @@
+<!-- pages/chat/chat.wxml -->
+<view class="chat-page">
+
+  <!-- Tutor mini-info strip (real tutors only) -->
+  <view wx:if="{{tutor}}" class="tutor-strip">
+    <view class="avatar-circle strip-avatar" style="background:{{tutor.color}}">{{avatarChar}}</view>
+    <view class="strip-info">
+      <view class="strip-name">{{tutor.name}} 老师</view>
+      <view class="strip-meta">
+        <text class="strip-price serif">¥{{tutor.price}}</text>
+        <text class="strip-unit">/课时</text>
+        <text class="strip-rating">⭐ {{tutor.rating}}</text>
+      </view>
+    </view>
+    <view class="strip-btn strip-btn-fill" catchtap="goBooking">预约试听</view>
+    <view class="strip-btn strip-btn-outline" catchtap="goDetail">查看主页</view>
+  </view>
+
+  <!-- Message list -->
+  <scroll-view
+    scroll-y
+    class="msg-scroll"
+    scroll-into-view="{{scrollTarget}}"
+    scroll-with-animation
+  >
+    <view class="msg-list">
+      <!-- One-time anti-fraud system line -->
+      <view class="system-line">🛡️ 请勿在平台外提前转账，谨防诈骗</view>
+
+      <block wx:for="{{messages}}" wx:key="id">
+        <view wx:if="{{item.showTime}}" class="time-divider">{{item.timeLabel}}</view>
+        <view id="{{item.id}}" class="msg-row {{item.from === 'me' ? 'row-me' : 'row-tutor'}}">
+          <view
+            wx:if="{{item.from !== 'me'}}"
+            class="avatar-circle msg-avatar"
+            style="background:{{avatarColor}}"
+          >{{avatarChar}}</view>
+          <view class="bubble {{item.from === 'me' ? 'bubble-me' : 'bubble-tutor'}}">{{item.text}}</view>
+        </view>
+      </block>
+
+      <view wx:if="{{messages.length === 0}}" class="empty-hint">
+        和 {{chatName}} 打个招呼，咨询课程详情吧～
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- Demo banner -->
+  <view class="demo-banner">演示模式 · 回复为模拟消息</view>
+
+  <!-- Input bar -->
+  <view class="input-bar">
+    <input
+      class="chat-input"
+      value="{{inputValue}}"
+      bindinput="onInput"
+      bindconfirm="onSend"
+      confirm-type="send"
+      placeholder="输入消息..."
+      cursor-spacing="20"
+    />
+    <view class="send-btn {{canSend ? '' : 'send-disabled'}}" bindtap="onSend">发送</view>
+  </view>
+
+</view>

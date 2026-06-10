@@ -25,6 +25,8 @@
     </view>
   </view>
 
+  <view class="detail-body">
+
   <!-- Bio -->
   <view class="card">
     <view class="section-title serif">老师简介</view>
@@ -58,7 +60,12 @@
         wx:for="{{tutor.books}}"
         wx:key="*this"
         class="book-item"
-      >📖 {{item}}</view>
+        data-key="{{item}}"
+        bindtap="goBook"
+      >
+        <text>📖 {{item}}</text>
+        <text class="book-arrow">›</text>
+      </view>
     </view>
   </view>
 
@@ -75,13 +82,40 @@
     <view class="section-sub">所有资质均经学伴人工核验。平台通过率仅 68%。</view>
   </view>
 
+  <!-- Parent reviews -->
+  <view class="card">
+    <view class="section-title serif">近期家长评价 ({{reviewCount}})</view>
+    <view wx:if="{{reviewCount === 0}}" class="review-empty">历史评价整理中，敬请期待</view>
+    <block wx:else>
+      <view
+        wx:for="{{showAllReviews ? reviewsFull : reviewsPreview}}"
+        wx:key="idx"
+        class="review-item {{index === lastReviewIndex ? 'review-item-last' : ''}}"
+      >
+        <view class="review-head">
+          <view class="review-parent">
+            <view class="review-avatar">{{item.parent[0]}}</view>
+            <text class="review-name">{{item.parent}}</text>
+          </view>
+          <text class="review-date">{{item.date}}</text>
+        </view>
+        <view class="review-stars">{{item.stars}}</view>
+        <view class="review-text">{{item.text}}</view>
+      </view>
+      <view
+        wx:if="{{reviewCount > 3}}"
+        class="review-toggle"
+        bindtap="toggleReviews"
+      >{{showAllReviews ? '收起评价' : '查看全部 ' + reviewCount + ' 条评价'}}</view>
+    </block>
+  </view>
+
+  </view>
+
   <!-- Compliance callout -->
   <view class="compliance-card">
     <view class="compliance-title">🛡️ 双减政策合规提示</view>
-    <view class="compliance-text">
-      针对义务教育阶段（小学 1 至初中 3 年级）学生的学科类辅导，不得在节假日、周末、寒暑假期间进行。
-      {{tutor.primarySubject}}类素质培训不受此限。
-    </view>
+    <view class="compliance-text">{{complianceText}}</view>
   </view>
 
   <!-- Sticky CTA -->
@@ -90,7 +124,8 @@
       <text class="price-big serif">¥{{tutor.price}}</text>
       <text class="price-unit">/ 课时</text>
     </view>
-    <button class="btn-primary cta-btn" bindtap="onContact">💬 联系老师</button>
+    <view class="btn-secondary cta-btn cta-btn-trial" bindtap="onBookTrial">预约试听</view>
+    <view class="btn-primary cta-btn cta-btn-contact" bindtap="onContact">💬 联系老师</view>
   </view>
 </view>
 
